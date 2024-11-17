@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cron Master</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+
+    <body class="body bg-dark text-white">
+        
+        <div class="menu">
+            <a href="{{ url_for('welcome') }}" class="left-menu bg-gray-1">Cron Master Tool</a>
+            <a href="{{ url_for('readme') }}" class="right-menu bg-gray-2">Plz Read Me</a>
+        </div>
+
+        <div class="content">
+            <div class="mb-4 mt-3 padding-bottom">
+                <label for="cronType" class="form-label"><strong>Choose a cron format:</strong></label>
+                <select id="cronType" class="form-select cron-dropdown bg-dark">
+                    <option value="standard">Standard</option>
+                    <option value="quartz">Quartz</option>
+                    <option value="aws">AWS</option>
+                    <option value="spring">Spring</option>
+                </select>
+            </div>
+
+            <div class="mb-4 mt-3 padding-bottom">
+                <label for="cronExpression" class="form-label"><strong>Enter cron expression:</strong></label>
+                <input type="text" id="cronExpression" class="form-control cron-input bg-dark" placeholder="0 * * * * *">
+            </div>
+
+            <p><strong>Description:</strong><br>
+            <span id="description">Enter a cron expression to see the description here.</span></p>
+
+            <footer class="footer">
+                Made with ❤️ by <a href="https://danula.xyz/linkedin" target="_blank">Danula Wanasinghe</a>
+            </footer>
+            
+        </div>
+
+        <script>
+            function updateDescription() {
+                const cronExpression = $("#cronExpression").val();
+                const formatType = $("#cronType").val();
+        
+                $.ajax({
+                    url: "/explain",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ expression: cronExpression, format_type: formatType }),
+                    success: function(response) {
+                        $("#description").text(response.explanation);
+                    },
+                    error: function() {
+                        $("#description").text("Error retrieving description. Please try again.");
+                    }
+                });
+            }
+        
+            $(document).ready(function() {
+                // Set initial placeholders and default values based on format type
+                const formatPlaceholders = {
+                    standard: "0 * * * *",
+                    quartz: "0 0 * * * *",
+                    aws: "0 * * * * *",
+                    spring: "0 * * * * *"
+                };
+        
+                // Initialize with the default cron type and expression
+                const defaultFormat = "standard";
+                $("#cronType").val(defaultFormat);
+                $("#cronExpression").attr("placeholder", formatPlaceholders[defaultFormat]);
+                $("#cronExpression").val(formatPlaceholders[defaultFormat]);
+                updateDescription();
+        
+                // Update input placeholder and value on dropdown change
+                $("#cronType").on("change", function() {
+                    const format = $(this).val();
+                    $("#cronExpression").attr("placeholder", formatPlaceholders[format]);
+                    $("#cronExpression").val(formatPlaceholders[format]);
+                    updateDescription(); // Trigger update on format change
+                });
+        
+                // Trigger update when the cron expression or type changes
+                $("#cronExpression").on("input", updateDescription);
+                $("#cronType").on("change", updateDescription);
+            });
+        </script>
+        
+    </body>
+</html>
