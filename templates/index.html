@@ -20,7 +20,7 @@
             <a href="{{ url_for('readme') }}" class="right-menu bg-gray-2">Plz Read Me</a>
         </div>
 
-        <div class="content">
+        <div class="content padding-top">
             <div class="mb-4 mt-3 padding-bottom">
                 <label for="cronType" class="form-label"><strong>Choose a cron format:</strong></label>
                 <select id="cronType" class="form-select cron-dropdown bg-dark">
@@ -36,13 +36,15 @@
                 <input type="text" id="cronExpression" class="form-control cron-input bg-dark" placeholder="0 * * * * *">
             </div>
 
-            <p><strong>Description:</strong><br>
-            <span id="description">Enter a cron expression to see the description here.</span></p>
+            <div class="mb-4 mt-3 width-80">
+                <p class="desc-2"><strong>Description:</strong></p>
+                <p class = "expression">“<span id="description">Enter a cron expression to see the description here.</span>”
+                </p>
+            </div>
 
-            <footer class="footer">
+            <footer class="footer-1">
                 Made with ❤️ by <a href="https://danula.xyz/linkedin" target="_blank">Danula Wanasinghe</a>
             </footer>
-            
         </div>
 
         <script>
@@ -68,13 +70,13 @@
                 // Set initial placeholders and default values based on format type
                 const formatPlaceholders = {
                     standard: "0 * * * *",
-                    quartz: "0 0 * * * *",
+                    quartz: "0 50 23 * * *",
                     aws: "0 * * * * *",
                     spring: "0 * * * * *"
                 };
         
                 // Initialize with the default cron type and expression
-                const defaultFormat = "standard";
+                const defaultFormat = "quartz";
                 $("#cronType").val(defaultFormat);
                 $("#cronExpression").attr("placeholder", formatPlaceholders[defaultFormat]);
                 $("#cronExpression").val(formatPlaceholders[defaultFormat]);
@@ -91,6 +93,32 @@
                 // Trigger update when the cron expression or type changes
                 $("#cronExpression").on("input", updateDescription);
                 $("#cronType").on("change", updateDescription);
+            });
+        </script>
+
+        <script>
+            // JavaScript to switch footer classes
+            document.addEventListener('DOMContentLoaded', function () {
+                const footer = document.querySelector('footer');
+
+                function updateFooterClass() {
+                    // Check if the page has a vertical scrollbar
+                    if (document.documentElement.scrollHeight > document.documentElement.clientHeight) {
+                        // Page has a scrollbar
+                        footer.classList.remove('footer-1');
+                        footer.classList.add('footer-2');
+                    } else {
+                        // No scrollbar
+                        footer.classList.remove('footer-2');
+                        footer.classList.add('footer-1');
+                    }
+                }
+
+                // Initial check
+                updateFooterClass();
+
+                // Recheck on window resize
+                window.addEventListener('resize', updateFooterClass);
             });
         </script>
         

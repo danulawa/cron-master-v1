@@ -1,65 +1,88 @@
-/* Background and layout */
+:root {
+    --bg-color-1: #141414;
+    --bg-color-2: #323232;
+    --bg-color-3: #414141;
+    --line-color-1: #00aaff;
+    --text-color-1: #ffffff;
+
+    --font-family-1: "Source Code Pro", monospace;
+    
+    --font-weight-1: 300;
+    --font-weight-2: 400;
+    --font-weight-3: 600;
+    
+    --font-size-1: 0.9rem;
+    --font-size-2: 1.1rem;
+    --font-size-3: 1.25rem;
+    --font-size-4: 1.5rem;
+    --font-size-5: 1.8rem;
+    
+    --padding-value-1: 40px;
+    --padding-value-2: 30px;
+    --padding-value-3: 50px;
+  }
+
 .body {
-    background-color: #141414;
-    font-family: "Source Code Pro", monospace;
+    background-color: var(--bg-color-1);
+    font-family: var(--font-family-1);
     font-optical-sizing: auto;
-    font-weight: 200;
+    font-weight: var(--font-weight-1);
 }
 
 .bg-dark {
-    background-color: #141414!important;
+    background-color: var(--bg-color-1)!important;
 }
 
 .bg-gray-1 {
-    background-color: #414141!important;
+    background-color: var(--bg-color-3)!important;
 }
 
 .bg-gray-2 {
-    background-color: #323232!important;
+    background-color: var(--bg-color-2)!important;
 }
 
-.content {
-    text-align: center; /* Centers text inside the content box */
-    padding-top: 40px; /* Adds space above the content */
+.width-80 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.padding-top {
+    padding-top: var(--padding-value-1);
 }
 
 .padding-bottom {
-    padding-bottom: 40px; /* Adds padding around the content */
+    padding-bottom: var(--padding-value-1);
+}
+
+.content {
+    text-align: center;
 }
 
 .mb-4.mt-3 {
-    display: flex; /* Makes the container a flexbox */
-    flex-direction: column; /* Stacks children vertically */
-    align-items: center; /* Horizontally centers children */
-}
-
-/* Title styling */
-.title {
-    font-size: 2.5rem;
-    color: #ffffff;
-    padding-top: 20px;
-    text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
 }
 
 /* Dropdown styling */
 .cron-dropdown {
-    border: 1px solid #00aaff;
-    color: #ffffff;
+    border: 1px solid var(--line-color-1);
+    color: var(--text-color-1);
     width: 300px;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: var(--font-size-2);
     text-align: center;
     transition: box-shadow 0.3s ease;
 }
 .cron-dropdown:focus {
-    box-shadow: 0 0 8px #00aaff;
+    box-shadow: 0 0 8px var(--line-color-1);
 }
 
 /* Input styling */
 .cron-input {
     border: 1px solid #00aaff;
     color: #ffffff;
-    width: 300px;
+    width: 500px;
     font-size: 1.1rem;
     text-align: center;
     transition: box-shadow 0.3s ease;
@@ -69,16 +92,8 @@
     color: #ffffff;
 }
 
-/* Description styling */
-#description {
-    font-size: 1.2rem;
-    text-align: center;
-    color: #ffffff;
-    margin-top: 20px;
-}
-
 /* Footer styling */
-.footer {
+.footer-1 {
     font-size: 0.9rem;
     text-align: center;
     padding-bottom: 30px;
@@ -87,18 +102,42 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensures it stays above other elements */
+    z-index: 1000; 
 }
 
-.footer a {
+/* Footer styling */
+.footer-2 {
+    font-size: 0.9rem;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    color: #ffffff;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+.footer-1 a {
     color: #ffffff;
     text-decoration: none;
 }
 
-.footer a:hover {
+.footer-1 a:hover {
     color: #00aaff;
     font-weight: 400;
 }
+
+.footer-2 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-2 a:hover {
+    color: #00aaff;
+    font-weight: 400;
+}
+
 
 .menu {
     display: flex;
@@ -112,7 +151,7 @@
     align-items: center;
     text-decoration: none;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     height: 100%;
 }
 
@@ -128,4 +167,22 @@
 
 .left-menu:hover, .right-menu:hover {
     color: #00a2ff;
+}
+
+
+/* Description styling */
+#description {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.desc-2 {
+    margin-bottom: 2px;
+}
+
+.expression {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-style: italic;
 }
