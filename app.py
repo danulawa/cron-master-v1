@@ -61,7 +61,7 @@ def explain_spring_cron(expression):
 
 # Route for the welcome page
 @app.route('/')
-def welcome():
+def index():
     return render_template('index.html')
 
 @app.route('/readme')
