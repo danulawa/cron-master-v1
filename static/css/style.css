@@ -1,0 +1,474 @@
+:root {
+    --primary-color-1: #080808;
+    --secondary-color-1: #202020;
+    --accent-color-1: #2a9d8f;
+    --accent-color-1-rbg: 42, 157, 143;
+    --text-color-1: #ffffff;
+
+    --font-family-1: "Work Sans", sans-serif;
+    --font-family-2: "Source Code Pro", monospace; 
+    --font-family-3: "DM Serif Display", serif;
+    
+    --font-weight-1: 300;   /* Light */
+    --font-weight-2: 400;   /* Regular */
+    --font-weight-3: 600;   /* Semi-bold */
+
+    --font-size-1: 0.75rem;   /* 12px */
+    --font-size-2: 0.875rem;  /* 14px */
+    --font-size-3: 1.0rem;    /* 16px */
+    --font-size-4: 1.125rem;  /* 18px */
+    --font-size-5: 1.5rem;    /* 24px */
+    --font-size-6: 1.675rem;  /* 26.8px */
+    --font-size-7: 1.75rem;   /* 28px */
+    --font-size-8: 1.875rem;  /* 30px */
+    
+    --padding-value-1: 30px;
+    --padding-value-2: 40px;
+    --padding-value-3: 50px;
+    --padding-value-4: 20px;
+    --padding-value-5: 10px;
+}
+
+/* Danula's Basic CSS */
+/* ----------------------------------------------------------------------------- */
+
+.bg-primary-color-1 {
+    background-color: var(--primary-color-1)!important;
+}
+
+.bg-secondary-color-1 {
+    background-color: var(--secondary-color-1)!important;
+}
+
+.color-accent-color-1 {
+    color: var(--accent-color-1)!important;
+}
+
+.color-text-color-1 {
+    color: var(--text-color-1)!important;
+}
+
+.font-family-1 {
+    font-family: var(--font-family-1);
+}
+
+.font-family-2 {
+    font-family: var(--font-family-2);
+}
+
+.font-family-3 {
+    font-family: var(--font-family-3);
+}
+
+.font-weight-1 {
+    font-weight: var(--font-weight-1);
+}
+
+.font-weight-2 {
+    font-weight: var(--font-weight-2);
+}
+
+.font-weight-3 {
+    font-weight: var(--font-weight-3);
+}
+
+.font-size-1 {
+    font-size: var(--font-size-1);
+}
+
+.font-size-2 {
+    font-size: var(--font-size-2);
+}
+
+.font-size-3 {
+    font-size: var(--font-size-3);
+}
+
+.font-size-4 {
+    font-size: var(--font-size-4);
+}
+
+.font-size-5 {
+    font-size: var(--font-size-5);
+}
+
+.font-size-6 {
+    font-size: var(--font-size-6);
+}
+
+.font-size-7 {
+    font-size: var(--font-size-7);
+}
+
+.font-size-8 {
+    font-size: var(--font-size-8);
+}
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* Header CSS */
+/* ----------------------------------------------------------------------------- */
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 160px; 
+    
+}
+
+.header-menu-item {
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-2);
+    font-style: italic;
+    font-family: var(--font-family-1);
+    color: var(--other-color-1);
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.header-menu-title {
+    font-style: italic;
+    position: relative;
+}
+
+.header-menu-item::after {
+    content: "";
+    position: absolute;
+    bottom: 2px; 
+    left: 0;
+    width: 0;
+    height: 2px; 
+    background-color: var(--accent-color-1);
+    transition: width 250ms ease;
+}
+
+.header-menu-item:hover {
+    color: var(--accent-color-1);
+}
+
+.header-menu-item:hover::after {
+    width: 100%;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+
+/* Tool CSS */
+/* ----------------------------------------------------------------------------- */
+
+.font-italic {
+    font-style: italic;
+}
+
+.width-80 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.padding-top {
+    padding-top: var(--padding-value-2);
+}
+
+.padding-bottom {
+    padding-bottom: var(--padding-value-2);
+}
+
+.content {
+    text-align: center;
+}
+
+.mb-4.mt-3 {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+.cron-dropdown-wrapper {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.cron-dropdown {
+    border: 1px solid var(--accent-color-1);
+    color: var(--other-color-1);
+    width: 100%;
+    padding-right: 30px; 
+    font-size: var(--font-size-3);
+    text-align: left; 
+    transition: box-shadow 0.3s ease;
+    appearance: none; 
+    background-color: var(--bg-secondary-color-1);
+}
+
+.cron-dropdown:focus {
+    box-shadow: 0 0 8px var(--accent-color-1);
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+    color: var(--accent-color-1)!important;
+}
+
+.cron-input-wrapper {
+    position: relative;
+    width: 400px; 
+    margin: 0 auto; 
+}
+
+.cron-input {
+    border: 1px solid var(--accent-color-1);
+    color: var(--other-color-1);
+    width: 100%; 
+    font-size: var(--font-size-3);
+    text-align: center;
+    padding-right: 40px; 
+    transition: box-shadow 0.3s ease;
+    box-sizing: border-box; 
+}
+
+.cron-input:focus {
+    box-shadow: 0 0 8px var(--accent-color-1);
+    color: var(--other-color-1);
+}
+
+.copy-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Align to the right inside the wrapper */
+    transform: translateY(-50%);
+    color: var(--accent-color-1);
+    cursor: pointer; /* Make it clear the icon is clickable */
+    font-size: 1.2rem;
+    pointer-events: auto; /* Ensure the icon is interactive */
+    transition: color 0.3s ease;
+}
+
+#description {
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--other-color-1);
+}
+
+.desc-2 {
+    margin-bottom: 2px;
+}
+
+.expression {
+    font-size: 1.8rem;
+    color: var(--other-color-1);
+    font-style: italic;
+}
+
+.display-format {
+    text-align: center;
+    font-size: var(--font-size-2);
+    padding-top: var(--padding-value-5);
+}
+
+/* ----------------------------------------------------------------------------- */
+
+
+/* Format Table CSS */
+/* ----------------------------------------------------------------------------- */
+
+/* Wrapper to center table and add space above */
+.format-tab-table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: var(--padding-value-3);
+  }
+  
+  /* Table styling */
+  .format-tab-table {
+    width: 800px;
+    border-radius: 10px;
+    border-collapse: collapse;
+  }
+  
+  .format-tab-table th, .format-tab-table td {
+    padding: 10px;
+    border: 1px solid rgba(var(--accent-color-1-rbg), 0.2);
+    color: white;
+    text-align: left;
+    font-size: var(--font-size-2);
+  }
+  
+  /* Column names styling */
+  .format-tab-table th {
+    font-weight: normal;
+    background-color: transparent;
+    color: white;
+  }
+  
+  /* Table cell styling */
+  .format-tab-table td {
+    background-color: transparent;
+  }
+  
+  /* Word highlight styling */
+  .format-tab-word-highlight {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 2px;
+    background-color: rgba(var(--accent-color-1-rbg), 0.2);
+    color: white;
+    border-radius: 3px;
+  }  
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* Field Table CSS */
+/* ----------------------------------------------------------------------------- */
+
+.field-tab-table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: var(--padding-value-4);
+}
+
+/* Table styling */
+.field-tab-table {
+    width: 800px;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+.field-tab-table th, .field-tab-table td {
+    padding: 10px;
+    border: 1px solid rgba(var(--accent-color-1-rbg), 0.2);
+    color: white;
+    text-align: left;
+    font-size: var(--font-size-2);
+}
+
+/* Column names styling */
+.field-tab-table th {
+    font-weight: normal;
+    background-color: transparent;
+    color: white;
+}
+
+/* Table cell styling */
+.field-tab-table td {
+    background-color: transparent;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* Operator Table CSS */
+/* ----------------------------------------------------------------------------- */
+
+.ops-tab-table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: var(--padding-value-4);
+}
+
+/* Table styling */
+.ops-tab-table {
+    width: 800px;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+.ops-tab-table th, .ops-tab-table td {
+    padding: 10px;
+    border: 1px solid rgba(var(--accent-color-1-rbg), 0.2);
+    color: white;
+    text-align: left;
+    font-size: var(--font-size-2);
+}
+
+/* Column names styling */
+.ops-tab-table th {
+    font-weight: normal;
+    background-color: transparent;
+    color: white;
+}
+
+/* Table cell styling */
+.ops-tab-table td {
+    background-color: transparent;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* Footer CSS */
+/* ----------------------------------------------------------------------------- */
+
+.footer-1 {
+    font-size: 0.9rem;
+    font-family: var(--font-family-1);
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 50px;
+    color: var(--other-color-1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+.footer-2 {
+    font-size: 0.9rem;
+    text-align: center;
+    font-family: var(--font-family-1);
+    padding-top: 50px;
+    padding-bottom: 30px;
+    color: var(--other-color-1);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+.footer-1 a {
+    color: var(--other-color-1);
+    text-decoration: none;
+}
+
+.footer-1 a:hover {
+    color: var(--accent-color-1);
+    font-weight: 400;
+}
+
+.footer-2 a {
+    color: var(--other-color-1);
+    text-decoration: none;
+}
+
+.footer-2 a:hover {
+    color: var(--accent-color-1);
+    font-weight: 400;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+

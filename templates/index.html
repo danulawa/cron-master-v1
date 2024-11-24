@@ -1,126 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "comp_base.html" %}
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cron Master</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
+{% block content %}
 
-    <body class="body bg-dark text-white">
-        
-        <div class="menu">
-            <a href="{{ url_for('index') }}" class="left-menu bg-gray-1">Cron Master Tool</a>
-            <a href="{{ url_for('readme') }}" class="right-menu bg-gray-2">Plz Read Me</a>
+<div class="content padding-top">
+    <div class="mb-4 mt-3 padding-bottom">
+        <label for="cronType" class="form-label">Choose A Cron Format:</label>
+        <div class="cron-dropdown-wrapper">
+            <select id="cronType" class="form-select cron-dropdown bg-secondary-color-1">
+                <option value="standard">Standard</option>
+                <option value="quartz">Quartz (Nifi)</option>
+                <option value="aws">AWS</option>
+                <option value="spring">Spring</option>
+            </select>
+            <i class="fa-solid fa-square-caret-down dropdown-icon"></i>
         </div>
+    </div>
 
-        <div class="content padding-top">
-            <div class="mb-4 mt-3 padding-bottom">
-                <label for="cronType" class="form-label"><strong>Choose a cron format:</strong></label>
-                <select id="cronType" class="form-select cron-dropdown bg-dark">
-                    <option value="standard">Standard</option>
-                    <option value="quartz">Quartz</option>
-                    <option value="aws">AWS</option>
-                    <option value="spring">Spring</option>
-                </select>
-            </div>
+    <div class="mb-4 mt-3 width-80">
+        <!-- <p class="desc-2">Cron Expression Meaning:</p> -->
+        <p class = "expression">“<span id="description">Enter a cron expression to see the description here.</span>”
+        </p>
+    </div>
 
-            <div class="mb-4 mt-3 padding-bottom">
-                <label for="cronExpression" class="form-label"><strong>Enter cron expression:</strong></label>
-                <input type="text" id="cronExpression" class="form-control cron-input bg-dark" placeholder="0 * * * * *">
-            </div>
-
-            <div class="mb-4 mt-3 width-80">
-                <p class="desc-2"><strong>Description:</strong></p>
-                <p class = "expression">“<span id="description">Enter a cron expression to see the description here.</span>”
-                </p>
-            </div>
-
-            <footer class="footer-1">
-                Made with ❤️ by <a href="https://danula.xyz/linkedin" target="_blank">Danula Wanasinghe</a>
-            </footer>
+    <div class="mb-4 mt-3 padding-bottom">
+        <label for="cronExpression" class="form-label">Enter Cron Expression here. Meaning is above.</label>
+        <div class="cron-input-wrapper">
+            <input type="text" id="cronExpression" class="form-control cron-input bg-secondary-color-1">
+            <i class="fa-solid fa-copy copy-icon"></i>
         </div>
-
-        <script>
-            function updateDescription() {
-                const cronExpression = $("#cronExpression").val();
-                const formatType = $("#cronType").val();
-        
-                $.ajax({
-                    url: "/explain",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify({ expression: cronExpression, format_type: formatType }),
-                    success: function(response) {
-                        $("#description").text(response.explanation);
-                    },
-                    error: function() {
-                        $("#description").text("Error retrieving description. Please try again.");
-                    }
-                });
-            }
-        
-            $(document).ready(function() {
-                // Set initial placeholders and default values based on format type
-                const formatPlaceholders = {
-                    standard: "0 * * * *",
-                    quartz: "0 50 23 * * *",
-                    aws: "0 * * * * *",
-                    spring: "0 * * * * *"
-                };
-        
-                // Initialize with the default cron type and expression
-                const defaultFormat = "quartz";
-                $("#cronType").val(defaultFormat);
-                $("#cronExpression").attr("placeholder", formatPlaceholders[defaultFormat]);
-                $("#cronExpression").val(formatPlaceholders[defaultFormat]);
-                updateDescription();
-        
-                // Update input placeholder and value on dropdown change
-                $("#cronType").on("change", function() {
-                    const format = $(this).val();
-                    $("#cronExpression").attr("placeholder", formatPlaceholders[format]);
-                    $("#cronExpression").val(formatPlaceholders[format]);
-                    updateDescription(); // Trigger update on format change
-                });
-        
-                // Trigger update when the cron expression or type changes
-                $("#cronExpression").on("input", updateDescription);
-                $("#cronType").on("change", updateDescription);
-            });
-        </script>
-
-        <script>
-            // JavaScript to switch footer classes
-            document.addEventListener('DOMContentLoaded', function () {
-                const footer = document.querySelector('footer');
-
-                function updateFooterClass() {
-                    // Check if the page has a vertical scrollbar
-                    if (document.documentElement.scrollHeight > document.documentElement.clientHeight) {
-                        // Page has a scrollbar
-                        footer.classList.remove('footer-1');
-                        footer.classList.add('footer-2');
-                    } else {
-                        // No scrollbar
-                        footer.classList.remove('footer-2');
-                        footer.classList.add('footer-1');
-                    }
-                }
-
-                // Initial check
-                updateFooterClass();
-
-                // Recheck on window resize
-                window.addEventListener('resize', updateFooterClass);
-            });
-        </script>
-        
-    </body>
-</html>
+        <div id="componentContainer">
+            <div id="comp_standard" class="component" style="display: none;">
+                {% include 'comp_standard.html' %}
+            </div>
+            <div id="comp_quartz" class="component" style="display: none;">
+                {% include 'comp_quartz.html' %}
+            </div>
+            <div id="comp_aws" class="component" style="display: none;">
+                {% include 'comp_aws.html' %}
+            </div>
+            <div id="comp_spring" class="component" style="display: none;">
+                {% include 'comp_spring.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

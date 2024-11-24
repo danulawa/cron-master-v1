@@ -1,32 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "comp_base.html" %}
+
+{% block content %}
+
+<div class="format-tab-table-wrapper">
+    <table class="format-tab-table">
+      <thead>
+        <tr>
+          <th>Format Name</th>
+          <th>Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard</td>
+          <td>
+            <span class="format-tab-word-highlight">Minute</span>  
+            <span class="format-tab-word-highlight">Hour</span>  
+            <span class="format-tab-word-highlight">Day(of Month)</span>  
+            <span class="format-tab-word-highlight">Month</span>  
+            <span class="format-tab-word-highlight">Day(of Week)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Quartz</td>
+          <td>
+            <span class="format-tab-word-highlight">Second</span>  
+            <span class="format-tab-word-highlight">Minute</span>  
+            <span class="format-tab-word-highlight">Hour</span>  
+            <span class="format-tab-word-highlight">Day(of Month)</span>  
+            <span class="format-tab-word-highlight">Month</span>  
+            <span class="format-tab-word-highlight">Day(of Week)</span>  
+            <span class="format-tab-word-highlight">Year(Optional)</span>
+          </td>
+        </tr>
+        <tr>
+          <td>AWS</td>
+          <td>
+            <span class="format-tab-word-highlight">Minute</span>  
+            <span class="format-tab-word-highlight">Hour</span>  
+            <span class="format-tab-word-highlight">Day(of Month)</span>  
+            <span class="format-tab-word-highlight">Month</span>  
+            <span class="format-tab-word-highlight">Day(of Week)</span>  
+            <span class="format-tab-word-highlight">Year</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Spring</td>
+          <td>
+            <span class="format-tab-word-highlight">Second</span>  
+            <span class="format-tab-word-highlight">Minute</span>  
+            <span class="format-tab-word-highlight">Hour</span>  
+            <span class="format-tab-word-highlight">Day(of Month)</span>  
+            <span class="format-tab-word-highlight">Month</span>  
+            <span class="format-tab-word-highlight">Day(of Week)</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>    
+
+<div class="content padding-top">
+    <div class="field-tab-table-wrapper">
+        <table class="field-tab-table">
+            <thead>
+                <tr>
+                    <th>Field Name</th>
+                    <th>Field Values Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Second</td>
+                    <td>0 to 59 or *</td>
+                </tr>
+                <tr>
+                    <td>Minute</td>
+                    <td>0 to 59 or *</td>
+                </tr>
+                <tr>
+                    <td>Hour</td>
+                    <td>0 to 23 or *</td>
+                </tr>
+                <tr>
+                    <td>Day (of Month)</td>
+                    <td>1 to 31 or *</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>1 to 12 or JAN to DEC or *</td>
+                </tr>
+                <tr>
+                    <td>Day (of Week)</td>
+                    <td>0 to 6 or SUN to SAT or 7 for Sunday (additionally) or * or ? (Quartz Only)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="content padding-top">
+    <div class="ops-tab-table-wrapper">
+        <table class="ops-tab-table">
+            <thead>
+                <tr>
+                    <th>Operator Name</th>
+                    <th>Operator Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>*</td>
+                    <td>any value</td>
+                </tr>
+                <tr>
+                    <td>,</td>
+                    <td>value list separator</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>range of values</td>
+                </tr>
+                <tr>
+                    <td>/</td>
+                    <td>step values</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
     
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cron Master</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
-
-    <body class="body bg-dark text-white">
-            
-        <div class="menu">
-            <a href="{{ url_for('index') }}" class="left-menu bg-gray-2">Cron Master Tool</a>
-            <a href="{{ url_for('readme') }}" class="right-menu bg-gray-1">Plz Read Me</a>
-        </div>
-
-        <div class="content">
-            <h1>Welcome to Cron Master Tool</h1>
-        </div>
-
-        <footer class="footer">
-            Made with ❤️ by <a href="https://danula.xyz/linkedin" target="_blank">Danula Wanasinghe</a>
-        </footer>        
-
-    </body>
-</html>
+{% endblock %}

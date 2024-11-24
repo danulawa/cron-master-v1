@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    {% include 'comp_head_tag.html' %}
+
+    <body class="body bg-primary-color-1 font-family-1 color-text-color-1 font-weight-2">
+            
+        {% include 'comp_navigation.html' %} 
+
+            {% block content %}
+            
+            {% endblock %}
+
+        {% include 'comp_footer.html' %}
+
+        {% include 'comp_js.html' %}
+
+    </body>
+</html>
