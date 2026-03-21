@@ -1,8 +1,10 @@
 :root {
     --primary-color-1: #080808;
     --secondary-color-1: #202020;
-    --accent-color-1: #2a9d8f;
-    --accent-color-1-rbg: 42, 157, 143;
+    /* --accent-color-1: #2a9d8f; */
+    --accent-color-1: #40c8e0;
+    /* --accent-color-1-rbg: 42, 157, 143; */
+    --accent-color-1-rbg: 64, 200, 224;
     --text-color-1: #ffffff;
 
     --font-family-1: "Work Sans", sans-serif;
